@@ -20,3 +20,4 @@ console.log(average.indexOf('[]'));
 console.log(bottom.indexOf('[]'));
 
 console.log(upper,average,bottom, upper.charAt(0), upper.charAt(upper.length-1), average.charAt(0), average.charAt(average.length-1), bottom.charAt(0), bottom.charAt(bottom.length-1), upper.indexOf('['))
+
