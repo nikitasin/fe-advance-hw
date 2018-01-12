@@ -174,4 +174,4 @@
 //console.log(0.6 === summ); // должно быть true
 
 
-'qwerty'.indexOf('b')
+//'qwerty'.indexOf('b')
