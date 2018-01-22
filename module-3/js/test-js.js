@@ -1,7 +1,4 @@
-//const keyboard = [ qwertyuiop[], asdfghjkl;'\, \zxcvbnm,./ ];
 
-//
-//const alphabet = "qwertyuiop[]asdfghjkl;'zxcvbnm,./";
 const alphabet = "qwertyuiop[]asdfghjkl;'\\zxcvbnm,./";
 
 //let a = alphabet.substr(0,alphabet.indexOf('a'));
