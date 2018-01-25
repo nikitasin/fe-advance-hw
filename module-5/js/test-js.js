@@ -20,41 +20,53 @@ const keyboard = {
     langs: ['en', 'ru', 'ua'],
     currentLang: ''
 };
-console.log(keyboard.layouts.en.topRow);
 
-let choice = prompt('Выберите язык раскладки en-0, ru-1, ua-2');
-		if (choice =='0'&&choice =='1'&&choice =='2'){
-			alert('Такого языка нет, попробуйте снова')
-			
-}
-//console.log(choice);
-
-
-
-
-
-function language(choice){
-	if(choice == '0') {
-		choice = keyboard.layouts.en;
-		let currentLang = choice;
-		return currentLang;
-	 }
+let choice;
+do {
+   choice = prompt('Выберите язык раскладки en-0, ru-1, ua-2', '');
+	if(choice === null){ 
+		break;}
+	if(choice !=='0' && choice !=='1' && choice !=='2'){
+		alert('Такого языка нет, попробуйте снова')
 	}
-console.log(language());
+} while ( choice !=='0' && choice !=='1' && choice !=='2' );
+
+if (choice =='0') { 
+ choice = keyboard.layouts.en;
+} else if (choice =='1') {
+  choice = keyboard.layouts.ru;
+} else if (choice =='2') {
+  choice = keyboard.layouts.ua;
+} else {
+  alert('cancel');
+}
+keyboard.currentLang = choice;
+console.log(keyboard.currentLang);
+
+let b = keyboard.currentLang;
+let stringLayouts = b.topRow.join() + b.middleRow.join() + b.bottomRow.join();
+
+ function getRand(stringLayouts){
+	let rendItem = [Math.floor(Math.random() * stringLayouts.length)];
+	 console.log(stringLayouts[rendItem]);
+ }
+console.log(getRand(stringLayouts));
+
+
+	
+	
 
 
 
-//if (choice =='0') { 
-// language = keyboard.layouts.en;
-//} else if (choice =='1') {
-//  language = keyboard.layouts.ru;
-//} else if (choice =='2') {
-//  language = keyboard.layouts.ua;
-//} else {
-//  alert('Такого языка нет, попробуйте снова');
-//}
-//console.log(language)
 
+//function language(choice){
+//	if(choice == '0') {
+//		choice = keyboard.layouts.en;
+//		let currentLang = choice;
+//		return currentLang;
+//	 }
+//	}
+//console.log(language());
 
 
 
