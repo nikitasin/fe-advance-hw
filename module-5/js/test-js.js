@@ -70,31 +70,6 @@ console.log(getRand(stringLayouts));
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //let result = addKeyboardLayout();
 //
 //
@@ -113,7 +88,4 @@ console.log(getRand(stringLayouts));
 //	return rendItem;
 //}
 //console.log(getRandCharInAlph());
-
-
-
 
