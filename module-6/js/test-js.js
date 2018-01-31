@@ -1,35 +1,47 @@
 let keyTrainer = {
-	chars: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'],
+   chars: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'],
+
+   charCount: 0,
+
+   setCharCount: function () {
+       let Count = +prompt('Какое количество символов вы наберете?', '');
+//       console.log(Count);
+       this.charCount = this.checkPositiveInteger(Count);
+
+   },
+
+   checkPositiveInteger: function(item) {
+//       console.log(item);
+       if (item >= 0){
+           return item;
+       } else {
+           return this.setCharCount();
+       }
+   },
 	
-	charCount: '',
 	
-	setCharCount: function num(){
-		let Count = +prompt('Какое количество символов вы наберете?', '')
-		return Count;
+	task: 0,
+	createTask: function(){
+		this.task = [];
+        for(i=0 ; i<this.charCount; i++){
+		let rand = Math.floor(Math.random() * this.chars.length);
+			this.task.push(this.chars[rand]);
+		}
 	},
 	
-	checkPositiveInteger: function isInteger(setCharCount) {
-  if (setCharCount > 0){
-    return true;
-  } else {
-    return false;
-  }
-//		console.log(this.checkPositiveInteger.isInteger());
-},
-	
+	startTask: function(){
+		let a = prompt(`'Наберите єту строку', ${this.task}`);
+		this.userInput = this.startTask;
+	},
+	userInput:0,
 };
 
-console.log(keyTrainer.setCharCount());
-console.log(keyTrainer.checkPositiveInteger());
-
-
-
-
-
-//	checkPositiveInteger: Number.isInteger || function(setCharCount) {
-//  		return typeof this.setCharCount === 'number'
-//         && Number.isFinite(this.setCharCount)
-//         && !(this.setCharCount % 1);
-//},
+keyTrainer.setCharCount();
+keyTrainer.createTask();
+console.log(keyTrainer.charCount);
+console.log(keyTrainer.task);
+keyTrainer.startTask();
+//console.log(keyTrainer.startTask);
+console.log(keyTrainer.userInput);
 
 
