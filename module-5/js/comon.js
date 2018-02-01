@@ -1,45 +1,47 @@
-var numParticipants = prompt('Введите число участников группы', '');
-        // проверка числа
-		if  (numParticipants <= 0) {
-				alert('Введите целое положительное число!');
-			} else if ((numParticipants^0) === numParticipants){
-				alert('Введите целое положительное число!');
-			} 
-		var nameHotel=[{ sharm: 15}, { hurgada: 25 }, { taba: 6}];
-		let sharm;
-		let hurgada;
-		let taba;
-		let currentNum = prompt('Введите номер соответствующий вашему выбору группы, где 1-taba(6 свободных мест), 2-sharm(15 свободных мест), 3-hurgada(25 свободных мест)','');
-		if (currentNum!=='1'&&currentNum!=='2'&&currentNum!=='3'){
-			alert('Введите правильный номер!')
-		}
-		if (numParticipants > 25){	
-	 		alert('Такого количества свободных мест, в одной группе, нет.'); 
-	 	} else if (currentNum==="3"&&numParticipants>0){
-	 		if (confirm('Вы выбрали группу hurgada, подтверждаете выбор?')===true){
-	 				alert('Осталось  ' + (25 - numParticipants) +' свободных мест');
-	 		} else {
-				alert('Простите, что вам не подошла группа, введите другой номер');
-			}
-	 	} else if (numParticipants>16&&currentNum==="2") {
-	 		alert('Мест в этой группе не хватает');
-	 		
-	 	}else if (numParticipants > 0&&currentNum==="2"){
-	 			if (confirm('Вы выбрали группу sharm, подтверждаете выбор?')===true){
-	 				alert('Осталось  ' + (15 - numParticipants) +' свободных мест');
-	 			}else {
-	 				alert('Простите, что вам не подошла группа, введите другой номер');
-	 			}
-	 	
-	 	} else if (currentNum==="1"&&numParticipants>7){
-	 			alert('Мест в этой группе не хватает');
-	 	}else if (currentNum==="1"&&numParticipants>0) {
-	 		if (confirm('Вы выбрали группу taba, подтверждаете выбор?')===true){
-	 				alert('Осталось  ' + (6 - numParticipants) +' свободных мест');
-	 			}else {
-	 				alert('Простите, что вам не подошла группа, введите другой номер');
-	 			}
-	 	}
+let keyTrainer = {
+    chars: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z', 'x', 'c', 'v', 'b', 'n', 'm'],
+    charCount: function setCharCount(){
+        while(checkPositiveInteger() === false){
+            var res = parseFloat(prompt("Введите количество символов",""));
+        }
+                function checkPositiveInteger(){
+                    return Number.isInteger(res) && res>0;
+                }
+        return res;
+    },
+    task: function createTask(){
+        var countInArray = this.charCount();
+        var res = new Array(countInArray);
+        for(let i=0; i<countInArray; i++){
+            res[i] = keyTrainer.chars[Math.floor(Math.random()*keyTrainer.chars.length-1)];
+        }
+        res = res.toString();
+        res = res.replace(/,/g,"");
+        return res;
+    },
+    userInput: function startTask(){
+        let taskArray = this.task();
+        let res = prompt(taskArray,"Напишите здесь такую же строку");
+        function countErrors(){
+            let k = 0;
+            for(let i=0;i<taskArray.length;i++){
+                if(taskArray[i] !== res[i]){
+                    k++;
+                }
+            }
+        this.userErrors = k;
+        if(this.userErrors === 0){
+            return console.log("Поздравляем!");
+        }
+        else return console.log("Попробуйте ещё раз");
+        }
+        return countErrors();
+        }
+};
 
+function run(){
+    keyTrainer.userInput();
+    console.log("Количество ошибок - " + this.userErrors);
+};
 
-
+run();
