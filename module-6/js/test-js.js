@@ -4,53 +4,45 @@ let keyTrainer = {
    charCount: 0,
    setCharCount: function () {
        let Count = +prompt('Какое количество символов вы наберете?', '');
-//       console.log(Count);
        this.charCount = this.checkPositiveInteger(Count);
    },
    checkPositiveInteger: function(item) {
-//       console.log(item);
        if (item >= 0){
            return item;
        } else {
            return this.setCharCount();
        }
    },
-	task: 0,
-	createTask: function(){
-		this.task = [];
-		for(i=0 ; i<this.charCount; i++){
-		let rand = Math.floor(Math.random() * this.chars.length);
-			this.task.push(this.chars[rand]);
-		}
-	},
-	startTask: function(){
-		let a = prompt(`'Наберите єту строку без запятых', ${this.task}`);
-		this.userInput = a;
-			let b = this.task.join('');
-//			console.log(b);
-		function countErrors(){
-			let error = 0;
-			for(let i=0; i<b.langht; i++){
-				if(b !== this.userInput){
-					error++;
-				}
-			}
-			this.userErrors = error;
-			if(this.userErrors === 0){
-				return console.log('Поздравляю')
-			}
-			else return this.startTask()
-		}
-		return countErrors();
-	},
+   task: [],
+   createTask: function(){
+               for(i=0 ; i<this.charCount; i++){
+           let rand = Math.floor(Math.random() * this.chars.length);
+           this.task.push(this.chars[rand]);
+       }
+   },
+   userInput: 0,
+   startTask: function(){
+       let a = prompt(`Наберите єту строку, -  ${this.task.join('')}`);
+       let b = this.task.join('');
+       function countErrors(){
+           let error = 0;
+           for(let i=0; i<b.length; i++){
+               if(b[i] !== a[i]){
+                   error++;
+               }
+           }
+           if(error === 0){
+               console.log(`Поздравляю`);
+           }
+           else console.log(`Вы совершили кучу ошибок, аж, -  ${error}`);
+       }
+       return countErrors();
+   },
 };
 function run(){
-keyTrainer.setCharCount();
-keyTrainer.createTask();
-//console.log(keyTrainer.charCount);
-//console.log(keyTrainer.task);
-keyTrainer.startTask();
-//console.log(keyTrainer.userInput);
- console.log("Найдено ошибок - " + this.userErrors);
+   keyTrainer.setCharCount();
+   keyTrainer.createTask();
+   keyTrainer.startTask();
+   console.log("Найдено ошибок - " + this.userErrors);
 };
 run();
