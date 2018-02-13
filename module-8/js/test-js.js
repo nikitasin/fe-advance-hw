@@ -1,97 +1,55 @@
-//function createDiv(){
-//let div = document.createElement('div');
-//for (var i=0; i<26; i++)
-//	
-//document.body.appendChild(div);
-//
+//  const playSound = note => {
+//    const audio = document.querySelector(`audio[data-note=${note}]`);
+//    audio.currentTime = 0;
+//    audio.play();
 //};
-//createDiv()
-//console.log(createDiv())
-//var div = document.createElement('div');
-//  div.innerHTML = "";
 //
-//  document.body.appendChild(div);
-
-//const keyboard = {
-//	layouts: {
-//            topRow: ['qwertyuiop'],
-//            middleRow: ['asdfghjkl'],
-//            bottomRow: ['zxcvbnm']
-//    },
-//	createLayout: function createDiv(){
-//		let a="";
-//let div = document.createElement('div');
-//for (var i=0; i<10; i++)
-//	a = div[i];
-//	div.prepend(a);
-//document.body.appendChild(div);
-//},
+//const button = document.querySelector('.keyboard');
 //
+//
+//const onClick = event => {
+//  console.log("event target: ", event.target);
+//
+//  if (event.target !== event.currentTarget) {
+//    event.target.classList.add("green");
+//
+// setTimeout(() => {
+//      event.target.classList.remove("green");
+//    }, 200);
+//  }
 //};
-//keyboard.createLayout();
-
-
-
-//________________
-
-//const list = document.querySelector('.list');
-//let items = '';
 //
-//for(let i = 0, max = 5; i < max; i += 1) {
-//  items += `<div> ${i}</div>`;
-//}
-//
-//console.log(items); // посмотрите что будет в консоли, одна длинная строка с тегами
-//
-//list.innerHTML = items; // вешаем всю разметку за одно обращен
-//_______________
+//button.addEventListener("click", onClick);
 
 
 
-const menuData = {
-	title: 'Eat it createElement, templates rule!',
-  items: ['asdad', 'nice']
+
+
+const playSound = note => {
+    const audio = document.querySelector(`audio[data-note=${note}]`);
+    audio.currentTime = 0;
+    audio.play();
 };
+const buttons = Array.from(document.querySelectorAll("button"));
 
-const html = document.getElementById('menu').textContent.trim();
-const output = document.getElementById('output');
-const compiled = _.template(html);
-const result = compiled(menuData);
 
-const addNew = document.getElementById('addNew');
-addNew.addEventListener('keydown', function(event) {
-	console.log(event.keyCode);
-	if (event.keyCode === 13) {
-		menuData.items.push(event.target.value);
-		const updatedResult = compiled(menuData);
-		output.innerHTML = updatedResult;
-		event.target.value = '';	
-	}
+	
+
+const keys = "qwertyuiop[]asdfghjkl;'zxcvbnm,./ ".split("");
+window.addEventListener('keydown', function(e){
+    if(keys.includes(e.key)){
+        
+        let button = buttons.find((a) => a.innerHTML === e.key || a.innerHTML === "space" )
+		
+
+    button.classList.add("keyboard__btn--active");
+setTimeout(function color(){button.classList.remove("keyboard__btn--active");}, 100);
+
+        let soundCheckbox = document.getElementById('slideThree');
+    
+        if(soundCheckbox.checked)
+            playSound(button.dataset.note);
+    
+    }
+
 });
-
-output.innerHTML = result;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
