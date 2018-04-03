@@ -34,7 +34,7 @@ let keyTrainer = {
            if(error === 0){
                console.log(`Поздравляю`);
            }
-           else console.log(`Вы совершили кучу ошибок, аж, -  ${error}`);
+          else console.log(`Вы совершили -  ${error} ошибок`);
        }
        return countErrors();
    },
@@ -43,6 +43,5 @@ function run(){
    keyTrainer.setCharCount();
    keyTrainer.createTask();
    keyTrainer.startTask();
-   console.log("Найдено ошибок - " + this.userErrors);
 };
 run();
