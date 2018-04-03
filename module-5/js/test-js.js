@@ -48,44 +48,6 @@ let stringLayouts = b.topRow.join() + b.middleRow.join() + b.bottomRow.join();
 
  function getRand(stringLayouts){
 	let rendItem = [Math.floor(Math.random() * stringLayouts.length)];
-	 console.log(stringLayouts[rendItem]);
+	 return stringLayouts[rendItem];
  }
 console.log(getRand(stringLayouts));
-
-
-	
-	
-
-
-
-
-//function language(choice){
-//	if(choice == '0') {
-//		choice = keyboard.layouts.en;
-//		let currentLang = choice;
-//		return currentLang;
-//	 }
-//	}
-//console.log(language());
-
-
-
-//let result = addKeyboardLayout();
-//
-//
-// function getRandCharInRow(row){
-//	 row = prompt ("номер от 1-3");
-//	let keyboard = result;
-//	 
-//	let rendItem = keyboard[row][Math.floor(Math.random() * keyboard.length)];
-//return rendItem;
-// }
-//console.log(getRandCharInRow());
-//
-//function getRandCharInAlph() {
-//	let keyboard = result;
-//	let rendItem = keyboard[Math.floor(Math.random() * keyboard.length)][Math.floor(Math.random() * keyboard.length)];
-//	return rendItem;
-//}
-//console.log(getRandCharInAlph());
-
