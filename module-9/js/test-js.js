@@ -1,97 +1,50 @@
-//function createDiv(){
-//let div = document.createElement('div');
-//for (var i=0; i<26; i++)
-//	
-//document.body.appendChild(div);
-//
-//};
-//createDiv()
-//console.log(createDiv())
-//var div = document.createElement('div');
-//  div.innerHTML = "";
-//
-//  document.body.appendChild(div);
+const keys = "qwertyuiop[]asdfghjkl;'zxcvbnm,./".split("");
 
-//const keyboard = {
-//	layouts: {
-//            topRow: ['qwertyuiop'],
-//            middleRow: ['asdfghjkl'],
-//            bottomRow: ['zxcvbnm']
-//    },
-//	createLayout: function createDiv(){
-//		let a="";
-//let div = document.createElement('div');
-//for (var i=0; i<10; i++)
-//	a = div[i];
-//	div.prepend(a);
-//document.body.appendChild(div);
-//},
-//
-//};
-//keyboard.createLayout();
+const keyboardTop = []
+const keyboardMiddle = [];
+const keyboardBottom = [];
 
+keyboardTop.push(keys.slice(0, 12));
+keyboardMiddle.push(keys.slice(12, 23));
+keyboardBottom.push(keys.slice(23, keys.length));
 
-
-//________________
-
-//const list = document.querySelector('.list');
-//let items = '';
-//
-//for(let i = 0, max = 5; i < max; i += 1) {
-//  items += `<div> ${i}</div>`;
-//}
-//
-//console.log(items); // посмотрите что будет в консоли, одна длинная строка с тегами
-//
-//list.innerHTML = items; // вешаем всю разметку за одно обращен
-//_______________
-
-
-
-const menuData = {
-	title: 'Eat it createElement, templates rule!',
-  items: ['asdad', 'nice']
+const keyboard = {
+    notes : ['do', 're', 'mi', 'fa', 'sol', 'la', 'si'],
+    rows: [keyboardTop,keyboardMiddle,keyboardBottom]
 };
 
-const html = document.getElementById('menu').textContent.trim();
-const output = document.getElementById('output');
-const compiled = _.template(html);
-const result = compiled(menuData);
+const keyboardTemplate = document.getElementById('keyboardLayout').innerHTML;
+const keyboardTemplateCompiled = _.template(keyboardTemplate);
+const keyboardTemplateHTML = keyboardTemplateCompiled(keyboard);
 
-const addNew = document.getElementById('addNew');
-addNew.addEventListener('keydown', function(event) {
-	console.log(event.keyCode);
-	if (event.keyCode === 13) {
-		menuData.items.push(event.target.value);
-		const updatedResult = compiled(menuData);
-		output.innerHTML = updatedResult;
-		event.target.value = '';	
-	}
-});
-
-output.innerHTML = result;
+const wrapp = document.getElementById('keyboardWrapp');
+wrapp.insertAdjacentHTML('afterbegin',keyboardTemplateHTML)
 
 
+const playSound = note => {
+    const audio = document.querySelector(`audio[data-note=${note}]`);
+    audio.currentTime = 0;
+    audio.play();
+};
+  
+const buttons = Array.from(document.querySelectorAll("button"));
 
 
+window.addEventListener('keydown', function(e){
 
+    if(keys.includes(e.key)){
 
+        console.log(e.key)
+    
+        let button = buttons.find((elem) => elem.innerHTML === e.key || elem.innerHTML === "space" )
 
+        button.classList.add('keyboard__btn--active');
+        setTimeout(()=>button.classList.remove('keyboard__btn--active'), 100);
 
+        let soundTrue = document.getElementById('slideThree');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if(soundTrue.checked)
+            playSound( button.dataset.note);
+    
+    }
+}, true)

@@ -8,19 +8,41 @@
 </head>
 <body>
 
-<input id="addNew" type="text">
-<script type="text/template" id="menu">
-  <div class="menu">
-    <h3 class="menu-title"><%- title %></h3>
-    <ul class="menu-list">
-      <% items.forEach(item => { %>
-        <li class="menu-item"><%- item %></li>
-        <% }); %>
-    </ul>
-  </div>
-</script>
- <div id="output">
- </div>
+<div class="slideThree">  
+        <input type="checkbox" value="None" id="slideThree" name="check" checked />
+        <label for="slideThree"></label>
+        <span>Sound</span>
+      </div>
+      <div id="keyboardWrapp">
+        <div class="keyboard__row">
+          <button class="keyboard__btn keyboard__btn--space" data-note="do">space</button>
+        </div>
+      </div>
+      <audio class="sonidos" src="audio/3.mp3" data-note="do"></audio>
+      <audio class="sonidos" src="audio/4.mp3" data-note="re"></audio>
+      <audio class="sonidos" src="audio/5.mp3" data-note="mi"></audio>
+      <audio class="sonidos" src="audio/6.mp3" data-note="fa"></audio>
+      <audio class="sonidos" src="audio/7.mp3" data-note="sol"></audio>
+      <audio class="sonidos" src="audio/1.mp3" data-note="la"></audio>
+      <audio class="sonidos" src="audio/2.mp3" data-note="si"></audio>
+      <script type="text\lodash" id="keyboardLayout">
+        <div class="keyboard">
+          <% keyboard.rows.forEach(row=>{ %>
+              <div class="keyboard__row">
+                  <%
+                  let notesCount = 0;
+                  row[0].forEach(button=>{
+                      %>
+                          <button class="keyboard__btn" data-note="<%- keyboard.notes[notesCount] %>"><%- button %></button>
+                      <%
+                      notesCount++
+                      if(notesCount == 7)
+                          notesCount = 0
+                  }) %>
+              </div>
+          <% }) %>                    
+          </div>
+      </script>
 
  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
 <script src="js/test-js.js"></script>
