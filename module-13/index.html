@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/css.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+
+
+  <div class="container">
+      <form acrion="#">
+          <div class="first name">
+            <input placeholder="First name" id="first_name" type="text" class="validate" pattern="[A-Za-z]{2,10}" required>
+            <label for="first_name"></label>
+          </div>
+          <div class="last name">
+            <input placeholder="Last name" id="last_name" type="text" class="validate" pattern="[A-Za-z]{2,10}" required>
+            <label for="last_name"></label>
+          </div>
+          <div class="tel">
+            <input placeholder="tel +xxx-xx-xx-xx-xxx" id="tel" type="text" class="validate" pattern="[0-9]{10}" required>
+            <label for="tel"></label>
+          </div>
+          <div class="submit">
+            <button class="btn waves-effect waves-light" id="submit-btn" type="submit" name="action">Submit</button>
+          </div>
+        
+      </form>
+      <ul class="results">
+      </ul>
+    </div>
+ 
+  
+
+	 
+<script src="js/js.js"></script>
+
+</body>
+</html>
