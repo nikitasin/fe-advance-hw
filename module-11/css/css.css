@@ -1,0 +1,50 @@
+.wrapper{
+    background: grey;
+    width: 500px;
+    border: 1px solid black;
+    margin: 0 auto;
+    padding: 14px;
+    box-sizing: border-box;
+}
+.wrapper>.list_name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+button{
+    background-color: rgb(251, 251, 98);
+    text-align: justify;
+    padding: 5px 10px;
+}
+.add,
+.remove,
+.update{
+ 
+    margin-top: 10px;
+}
+input{
+    border: 1px solid black;
+    line-height: 20px;
+}
+.list_name{
+    margin-top: 20px;
+}
+.remove input,
+.getUser
+{
+    width: 391px;
+}
+.update button{
+    padding: 5px 15px;
+}
+#js-output{
+	display: flex;
+	flex-direction: column;
+	padding: 10px 0 10px 10px;
+}
+#output{
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
